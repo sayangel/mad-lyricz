@@ -35,7 +35,7 @@
         }
     ],
   "RequiredPermissions": [
-    "https://api.mygreatapp.com"
+    "http://test.lyricfind.com"
   ],
   "SupportedDeviceClasses": [
     "Web",

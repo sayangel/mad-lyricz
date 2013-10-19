@@ -2,7 +2,7 @@ require([
   '$api/models',
   '$views/list#List',
   '$views/buttons'
-], function(models, List, buttons) {
+], function(models, List, buttons, toplists) {
   'use strict';
 
 
