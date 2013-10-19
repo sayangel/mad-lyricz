@@ -20,6 +20,20 @@
     "api": "1.0.0",
     "views": "1.10.0"
   },
+  "DefaultTabs": [
+        {
+            "arguments": "index",
+            "title": {
+                "en": "Sing-Along!"
+            }
+        },
+        {
+            "arguments": "tabs",
+            "title": {
+                "en": "Explore"
+            }
+        }
+    ],
   "RequiredPermissions": [
     "https://api.mygreatapp.com"
   ],
