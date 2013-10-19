@@ -1,0 +1,19 @@
+function pull_inputs()
+
+{
+
+var noun1=document.getelementbyID("noun1").value;
+
+var noun2=document.getelementbyID("noun2").value;
+var noun3=document.getelementbyID("noun3").value;
+var verb1=document.getelementbyID("verb1").value;
+var adverb1=document.getelementbyID("adverb1").value;
+var adjective1=document.getelementbyID("adjective1").value;
+
+ document.writeln(noun2);
+
+// idea is read the value from textbox do the manipulation and agin assign to another textbox.
+
+// u can also cjheck for null make sure ur using right textbox control id. u can also use textBox1.ClientID
+
+}

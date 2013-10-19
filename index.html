@@ -2,10 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>The name of the app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad-Lyricz</title>
     <!-- Include the stylesheets you need for the Views components -->
     <!-- See https://developer.spotify.com/technologies/apps/docs/preview/views/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
     <link rel="stylesheet" href="$views/css/image.css">
     <link rel="stylesheet" href="$views/css/list.css">
     <link rel="stylesheet" href="$views/css/buttons.css">
@@ -17,11 +19,42 @@
   <body>
     <h1></h1>
 
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <div id="index" class = "section">
         <div id="buttonContainer"></div>
-        
+
         <div id="single-track-player"></div>
+    <!-- <input type="text" value="Enter your email" onfocus="blank(this)" onblur="fill(this)" /> -->
+
+        <input type="text" id ="noun1" placeholder = "Type a noun"/>
+        <input type="text" id="noun2" placeholder="enter a noun:"/>
+        <input type="text" id="noun3" placeholder="enter a noun:"/>
+
+        <input type="text" id="verb1" placeholder="enter a verb:"/>
+        <!-- 
+        <input type="text" id="Verb2" value="enter a verb:"/>
+        <input type="text" id="Verb3" value="enter a verb:"/> -->
+
+    
+        <input type="text" id="adverb1" placeholder="enter an adverb:"/>    <!--     
+        <input type="text" id="Adverb2" value="enter an adverb:"/> 
+        <input type="text" id="Adverb3" value="enter an adverb:"/>  -->
+
+        <input type="text" id="adjective1" placeholder="enter an adjective:"/> 
+        <input type="text" id="adjective2" placeholder="enter an adjective:"/> 
+        <script src="scripts/pull_inputs.js"></script>
+
+
+        
+        <script src="scripts/lexicon.js"></script>
+        <script src="scripts/lexer.js"></script>
+        <script src="scripts/POSTagger.js"></script>
+
+        <script src="scripts/test.js"></script>
+
+
     </div>
     <div id="tabs" class = "section">
         <h1>YEAH, BITCH</h1>
@@ -32,11 +65,7 @@
     </div>
     <script src="scripts/main.js"></script>
 
-    <script src="scripts/lexicon.js"></script>
-    <script src="scripts/lexer.js"></script>
-    <script src="scripts/POSTagger.js"></script>
 
-    <script src="scripts/test.js"></script>
 
   </body>
 </html>
