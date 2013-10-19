@@ -1,6 +1,6 @@
 
 
-var words = new Lexer().lex("Angel is a super cool super super super super good Mexican");
+var words = new Lexer().lex("Angel is a super cool super super poorly  super super good Mexican");
 var taggedWords = new POSTagger().tag(words);
 
     var j_counter = 0;
@@ -21,17 +21,11 @@ var taggedWords = new POSTagger().tag(words);
     var adjectives=[];
     var others = [];
 
-
-
-
-
-
 for (var i in taggedWords) {
     var taggedWord = taggedWords[i];
     var word = taggedWord[0];
     var tag = taggedWord[1];
 
-    document.writeln(word)
 
     if(tag[0]=='N'){
 		nouns[n_counter] = word;
@@ -49,11 +43,13 @@ for (var i in taggedWords) {
 		r_counter++;
     }
     else if(tag[0]=='V'){
+
 		verbs[n_counter] = word;
 		v_tracker[v_counter] = i;
 		v_counter++;
     }
     else {
+
         others[o_counter] = word;
         o_tracker[o_counter] = i;
         o_counter++;
@@ -64,6 +60,7 @@ for (var i in taggedWords) {
 
 var dividing_factor = 10;
 
+// ADJECTIVES
 var num_to_change_j = Math.ceil(j_counter/dividing_factor);
 var pool =[];
 for(var i=0;i<=j_counter;i++){pool[i]=i}
@@ -78,6 +75,57 @@ var new_pool = shuffle(pool);
 for(var i=0;i<=num_to_change_j;i++){
     adjectives[new_pool[i]]="poop";
 }
+
+// NOUNS
+
+var num_to_change_n = Math.ceil(n_counter/dividing_factor);
+var pool =[];
+for(var i=0;i<=n_counter;i++){pool[i]=i}
+
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
+var new_pool = shuffle(pool);
+
+for(var i=0;i<=num_to_change_n;i++){
+    nouns[new_pool[i]]="boob";
+}
+
+//VERBS
+
+var num_to_change_v = Math.ceil(v_counter/dividing_factor);
+var pool =[];
+for(var i=0;i<=v_counter;i++){pool[i]=i}
+
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
+var new_pool = shuffle(pool);
+
+for(var i=0;i<=num_to_change_v;i++){
+    verbs[new_pool[i]]="barnyard";
+}
+
+//ADVERBS
+var num_to_change_r = Math.ceil(r_counter/dividing_factor);
+var pool4 =[];
+for(var i=0;i<=r_counter;i++){pool4[i]=i}
+
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
+var new_pool = shuffle(pool4);
+
+for(var i=0;i<=num_to_change_j;i++){
+    adverbs[new_pool[i]]="puppy";
+}
+
 
 // document.writeln(new_pool);
 // document.writeln("</br>nouns (" + n_counter + "):" + nouns)
