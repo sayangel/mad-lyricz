@@ -23,6 +23,11 @@ require([
       sections[i].style.display = 'none';
     }
     current.style.display = 'block';
+    if(args[0]=='index')
+    {
+     models.player.pause();
+    }
+    
   }
 
 
