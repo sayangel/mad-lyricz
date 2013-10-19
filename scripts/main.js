@@ -11,9 +11,6 @@ require([
 
   models.application.addEventListener('arguments',pages);
 
-
-  languageExample.doHelloWorld();
-  coverExample.doCoverForAlbum();
   buttonExample.doShareButtonForArtist();
   buttonExample.doPlayButtonForAlbum();
   playlistExample.doPlaylistForAlbum();
