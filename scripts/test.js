@@ -1,149 +1,58 @@
+require(['$api/models'
+], function(models) {
+var getPOS = function(input, replacements)
+{
 
-
-var words = new Lexer().lex("Angel is a super cool super super poorly  super super good Mexican");
+var words = new Lexer().lex(input);
 var taggedWords = new POSTagger().tag(words);
+    // document.writeln(input)
+var rep_array = [];
 
-    var j_counter = 0;
-    var n_counter = 0;
-    var r_counter = 0;
-    var v_counter = 0;
-    var o_counter = 0;
+for(var i=0;i<replacements.length;i++){
+    rep_array[i] = replacements[i].value;
+}
+    var rand_n = Math.ceil(Math.random()*4)+1;
+    var rand_v = Math.ceil(Math.random()*2)+5;
+    var rand_j = Math.ceil(Math.random()*2)-1;
 
-    var j_tracker = [];
-    var n_tracker = [];
-    var r_tracker = [];
-    var v_tracker = [];
-    var o_tracker = [];
+    var rand_noun = rep_array[rand_n];
+    var         rand_verb = rep_array[rand_v];
+    var rand_adj = rep_array[rand_j];
 
-    var nouns=[];
-    var verbs=[];
-    var adverbs=[];
-    var adjectives=[];
-    var others = [];
+    var index = Math.ceil(Math.random()*taggedWords.length);
 
-for (var i in taggedWords) {
-    var taggedWord = taggedWords[i];
+    var taggedWord = taggedWords[index];
+    var tag = taggedWord[1];
+
+    var new_lyrics_string;
+
+    var new_lyrics_string = [];
+
+for (var x in taggedWords) {
+    var taggedWord = taggedWords[x];
     var word = taggedWord[0];
     var tag = taggedWord[1];
 
-
-    if(tag[0]=='N'){
-		nouns[n_counter] = word;
-		n_tracker[n_counter] = i;
-		n_counter++;
-    }
-    else if(tag[0]=='J'){
-		adjectives[j_counter] = word;
-		j_tracker[j_counter] = i;
-		j_counter++;
-    }
-    else if(tag[0]=='R'){
-		adverbs[n_counter] = word;
-		r_tracker[r_counter] = i;
-		r_counter++;
-    }
-    else if(tag[0]=='V'){
-
-		verbs[n_counter] = word;
-		v_tracker[v_counter] = i;
-		v_counter++;
-    }
-    else {
-
-        others[o_counter] = word;
-        o_tracker[o_counter] = i;
-        o_counter++;
+    if(x==index){
+        if(tag[0] = 'N'){
+            word = rand_noun;
+        }
+        else if(tag[0] = 'V'){
+            word = rand_verb;
+        }
+        else if(tag[0] = 'J'){
+            word = rand_adj;
+        }
+        else{
+        }
     }
 
+    new_lyrics_string+= " ";
+    new_lyrics_string+= word;
 }
 
-
-var dividing_factor = 10;
-
-// ADJECTIVES
-var num_to_change_j = Math.ceil(j_counter/dividing_factor);
-var pool =[];
-for(var i=0;i<=j_counter;i++){pool[i]=i}
-
-function shuffle(o){ //v1.0
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
-};
-
-var new_pool = shuffle(pool);
-
-for(var i=0;i<=num_to_change_j;i++){
-    adjectives[new_pool[i]]="poop";
+return new_lyrics_string;
 }
 
-// NOUNS
-
-var num_to_change_n = Math.ceil(n_counter/dividing_factor);
-var pool =[];
-for(var i=0;i<=n_counter;i++){pool[i]=i}
-
-function shuffle(o){ //v1.0
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
-};
-
-var new_pool = shuffle(pool);
-
-for(var i=0;i<=num_to_change_n;i++){
-    nouns[new_pool[i]]="boob";
-}
-
-//VERBS
-
-var num_to_change_v = Math.ceil(v_counter/dividing_factor);
-var pool =[];
-for(var i=0;i<=v_counter;i++){pool[i]=i}
-
-function shuffle(o){ //v1.0
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
-};
-
-var new_pool = shuffle(pool);
-
-for(var i=0;i<=num_to_change_v;i++){
-    verbs[new_pool[i]]="barnyard";
-}
-
-//ADVERBS
-var num_to_change_r = Math.ceil(r_counter/dividing_factor);
-var pool4 =[];
-for(var i=0;i<=r_counter;i++){pool4[i]=i}
-
-function shuffle(o){ //v1.0
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
-};
-
-var new_pool = shuffle(pool4);
-
-for(var i=0;i<=num_to_change_j;i++){
-    adverbs[new_pool[i]]="puppy";
-}
-
-
-// document.writeln(new_pool);
-// document.writeln("</br>nouns (" + n_counter + "):" + nouns)
-// document.writeln("</br>verbs: " + verbs)
-// document.writeln("</br>adverbs: " + adverbs)
-// document.writeln("</br>adjectives (" + j_tracker + "):"+ adjectives)
-
-
-
-var new_lyrics = [];
-
-for(var a=0;a<=nouns.length;a++){new_lyrics[n_tracker[a]]=nouns[a]}
-for (var a=0;a<=verbs.length;a++){new_lyrics[v_tracker[a]]=verbs[a]}
-for (var a=0;a<=adverbs.length;a++){new_lyrics[r_tracker[a]]=adverbs[a]}
-for (var a=0;a<=adjectives.length;a++){new_lyrics[j_tracker[a]]=adjectives[a]}
-for (var a=0;a<=others.length;a++){new_lyrics[o_tracker[a]]=others[a]}
-
-
-
-document.writeln("<br>" + new_lyrics);
-
+  exports.getPOS = getPOS;
+});
