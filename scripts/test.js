@@ -5,7 +5,6 @@ var getPOS = function(input, replacements)
 
 var words = new Lexer().lex(input);
 var taggedWords = new POSTagger().tag(words);
-    // document.writeln(input)
 var rep_array = [];
 
 for(var i=0;i<replacements.length;i++){
@@ -23,9 +22,7 @@ for(var i=0;i<replacements.length;i++){
 
     var taggedWord = taggedWords[index];
     var tag = taggedWord[1];
-
-    var new_lyrics_string;
-
+    
     var new_lyrics_string = [];
 
 for (var x in taggedWords) {
@@ -46,8 +43,13 @@ for (var x in taggedWords) {
         }
     }
 
-    new_lyrics_string+= " ";
-    new_lyrics_string+= word;
+    if(tag.charAt(0) == 'S' || tag.charAt(0) == ',' || tag.charAt(0) == '(' || tag.charAt(0) == ')' || tag.charAt(0) == '.'){
+        new_lyrics_string+= word;
+    }
+    else{
+        new_lyrics_string+= " ";
+        new_lyrics_string+= word;
+    }
 }
 
 return new_lyrics_string;
